@@ -6,6 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+// import '../../content.css';
 
 
 export default class BasicTable extends React.Component {
@@ -16,28 +17,36 @@ export default class BasicTable extends React.Component {
                 company: 'Premium Art',
                 division: 'Design',
                 title: 'Content 1',
-                createdData: '11-09-2023 7:08',
-                updatedData: '11-09-2023 7:08' 
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
                 },
                 {
                 id: 2,
                 company: 'Buu Digital LTDA',
                 division: 'Programmer',
                 title: 'Toft Site',
-                createdData: '11-09-2023 7:08',
-                updatedData: '11-09-2023 7:08' 
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
                 },
                 {
                 id: 3,
                 company: 'Center Bob',
                 division: 'FrontEnd',
                 title: 'Tools for Building',
-                createdData: '11-09-2023 7:08',
-                updatedData: '11-09-2023 7:08' 
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
                 }
         ],
+        rowNames: {
+            id: '#',
+            company: 'Company Name',
+            division: 'Division',
+            title: 'Title',
+            createdDate: 'Created Date',
+            updatedDate: 'Updated Date' 
+        },
         searchValue: '',
-        whichColumn: 'company'
+        whichColumn: ''
     };
 
     listSave = this.state.listData;
@@ -52,23 +61,27 @@ export default class BasicTable extends React.Component {
 
     searchBtn = () => {
         let newList = this.state.listData.filter(content => {
-            console.log('Entrei no filter')
-            console.log(content[this.state.whichColumn]);
-            console.log(content[this.state.whichColumn].toLowerCase().includes(this.state.searchValue.toLowerCase()));
-            return content[this.state.whichColumn].toLowerCase().includes(this.state.searchValue.toLowerCase());
+            if (this.state.whichColumn !== '') {
+                return content[this.state.whichColumn].toLowerCase().includes(this.state.searchValue.toLowerCase());
+            } else {
+                return content.company.toLowerCase().includes(this.state.searchValue.toLowerCase());
+            }
         });
         this.setState({ listData : newList });
     }
 
     handleClick = (nameColumn) => {
-        console.log('Entrei')
-        console.log(nameColumn)
         this.setState({ whichColumn: nameColumn });
+    }
+
+    disableSelectionColumn = () => {
+        console.log('Entrei')
+        this.setState({ whichColumn: '' });
     }
 
     render() {
 
-        const { listData, searchValue} = this.state;
+        const { listData, searchValue, whichColumn, rowNames } = this.state;
 
         return (
             <div>
@@ -82,17 +95,23 @@ export default class BasicTable extends React.Component {
                 <br/>
                 <button onClick={this.clearBtn}>Clear</button>
                 <button type="search" onClick={this.searchBtn}>Search</button>
-                <h1>Tables - Content List</h1>
+                <p>Tables <b>- Content List</b></p>
+                {whichColumn !== '' && (
+                    <div>
+                        <p>Column {rowNames[whichColumn]} Selected</p>
+                        <button onClick={this.disableSelectionColumn}>Disable Selection Column</button>
+                    </div>
+                )}
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
                             <TableRow>
-                                <TableCell align="center">#</TableCell>
-                                <TableCell align="center">Company Name</TableCell>
-                                <TableCell align="center">Division</TableCell>
-                                <TableCell align="center">Title</TableCell>
-                                <TableCell align="center">createdData</TableCell>
-                                <TableCell align="center">updatedData</TableCell>
+                                <TableCell align="center" onClick={() => this.handleClick('id')}>#</TableCell>
+                                <TableCell align="center" onClick={() => this.handleClick('company')}>Company Name</TableCell>
+                                <TableCell align="center" onClick={() => this.handleClick('division')}>Divisio</TableCell>
+                                <TableCell align="center" onClick={() => this.handleClick('title')}>Title</TableCell>
+                                <TableCell align="center" onClick={() => this.handleClick('createdDate')}>Created Date</TableCell>
+                                <TableCell align="center" onClick={() => this.handleClick('updatedDate')}>Updated Date</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -107,8 +126,8 @@ export default class BasicTable extends React.Component {
                                 <TableCell align="center">{row.company}</TableCell>
                                 <TableCell align="center">{row.division}</TableCell>
                                 <TableCell align="center">{row.title}</TableCell>
-                                <TableCell align="center">{row.createdData}</TableCell>
-                                <TableCell align="center">{row.updatedData}</TableCell>
+                                <TableCell align="center">{row.createdDate}</TableCell>
+                                <TableCell align="center">{row.updatedDate}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
