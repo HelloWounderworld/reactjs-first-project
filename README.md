@@ -75,7 +75,7 @@ My first ReactJS Project for Premium Art!
 ## Content project:
 The Task will be as the follows:
 
-1.Create a react project using create-react-app.
+1.Create a react project using create-react-app. - Ok!
 
 2.Make the UI as it looks in the image data.
 
