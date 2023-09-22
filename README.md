@@ -86,8 +86,8 @@ The Task will be as the follows:
 
 3.It does not have to look exactly the same, but the components should be there.
 
-4.The data can be parsed from a pre-populated json object in the application itself. The list will be rendered from the json objectThe input field and the search button need to be functional, searching by any one selected column is enough.
+4.The data can be parsed from a pre-populated json object in the application itself. The list will be rendered from the json object. The input field and the search button need to be functional, searching by any one selected column is enough.
 
-5.Please use git to manage the project
+5.Please use git to manage the project. - Ok!
 
-6.I am providing one row of example data, the rest can be added at random by the candidate himself.
+6.I am providing one row of example data, the rest can be added at random by the candidate himself. - Ok!
