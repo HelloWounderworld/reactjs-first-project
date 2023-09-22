@@ -1,14 +1,9 @@
 import logo from '../../logo.svg';
 import './App.css';
 import { Component } from 'react';
-import { Content } from '../Content'
+import { Menu } from '../../components/Menu'
 
-class App extends Component {
-
-  goToContentPage() {
-    // Access Content page!
-    alert('Vai para a página Content!');
-  }
+export default class App extends Component {
 
   render() {
 
@@ -19,7 +14,7 @@ class App extends Component {
           <p>
             Please. Click the button below!
           </p>
-          <button onClick = {this.goToContentPage}>Content Page</button>
+          <Menu />
         </header>
       </div>
     );
@@ -48,5 +43,3 @@ class App extends Component {
 //     </div>
 //   );
 // }
-
-export default App;

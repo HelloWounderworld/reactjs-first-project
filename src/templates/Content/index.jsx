@@ -1,8 +1,10 @@
-export const Content = ({id, company, division}) => {
+import { ContentList } from '../../components/ContentList';
+
+export const Content = () => {
     return (
-        <div key={id}>
-            <h1>{company}</h1>
-            <p>{division}</p>
+        <div>
+            <h1>Content Page!!</h1>
+            <ContentList />
         </div>
     );
 }
