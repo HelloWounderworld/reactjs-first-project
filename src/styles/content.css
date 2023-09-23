@@ -106,3 +106,8 @@ code {
   border-radius: 10px;
   border: none;
 }
+
+.hierarchy{
+  color: rgb(255 255 255);
+  font-size: 15px;
+}

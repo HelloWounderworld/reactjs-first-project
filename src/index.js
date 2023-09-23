@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './styles/index.css';
 import App from './templates/Home/App';
 import Content from './templates/Content';
+import Contentbet from './templates/Contentbet';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -13,6 +14,7 @@ root.render(
       <Routes>
         <Route path="/" element = {<App />}  exact/>
         <Route path="/content" element = {<Content />}  exact/>
+        <Route path="/contentbet" element = {<Contentbet />}  exact/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

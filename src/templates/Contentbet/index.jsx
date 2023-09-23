@@ -6,11 +6,98 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { ContentList } from '../../components/ContentList';
-import '../../styles/content.css';
+import { ContentListbet } from '../../components/ContentListbet';
+import { TableVirtuoso } from 'react-virtuoso';
 
+const columns = [
+  {
+    width: 100,
+    label: '#',
+    dataKey: 'id',
+  },
+  {
+    width: 120,
+    label: 'Company Name',
+    dataKey: 'company',
+    numeric: true,
+  },
+  {
+    width: 120,
+    label: 'Division',
+    dataKey: 'division',
+    numeric: true,
+  },
+  {
+    width: 120,
+    label: 'Title',
+    dataKey: 'title',
+    numeric: true,
+  },
+  {
+    width: 120,
+    label: 'Created Date',
+    dataKey: 'createdDate',
+    numeric: true,
+  },
+  {
+    width: 120,
+    label: 'Updated Date',
+    dataKey: 'updatedDate',
+    numeric: true,
+  },
+];
 
-export default class BasicTable extends React.Component {
+const VirtuosoTableComponents = {
+  Scroller: React.forwardRef((props, ref) => (
+    <TableContainer component={Paper} {...props} ref={ref} />
+  )),
+  Table: (props) => (
+    <Table {...props} sx={{ borderCollapse: 'separate', tableLayout: 'fixed' }} />
+  ),
+  TableHead,
+  TableRow: ({ item: _item, ...props }) => <TableRow {...props} />,
+  TableBody: React.forwardRef((props, ref) => <TableBody {...props} ref={ref} />),
+};
+
+function fixedHeaderContent() {
+  return (
+    <TableRow>
+      {columns.map((column) => (
+        <TableCell
+          key={column.dataKey}
+          variant="head"
+        //   align={column.numeric || false ? 'right' : 'left'}
+          align={'center'}
+          style={{ width: column.width }}
+          sx={{
+            backgroundColor: 'background.paper',
+          }}
+        >
+          {column.label}
+        </TableCell>
+      ))}
+    </TableRow>
+  );
+}
+
+function rowContent(_index, row) {
+  return (
+    <React.Fragment>
+      {columns.map((column) => (
+        <TableCell
+            key={column.dataKey}
+        //   align={column.numeric || false ? 'right' : 'left'}
+            align={'center'}
+        >
+          {row[column.dataKey]}
+        </TableCell>
+      ))}
+      {/* <ContentListbet /> */}
+    </React.Fragment>
+  );
+}
+
+export default class ReactVirtualizedTable extends React.Component {
     state = {
         listData: [
             {
@@ -148,32 +235,6 @@ export default class BasicTable extends React.Component {
 
     listSave = this.state.listData;
 
-    handleChange = (e) => {
-        this.setState({ searchValue : e.target.value})
-    }
-
-    clearBtn = () => {
-        this.setState({ searchValue: '', listData: this.listSave});
-    }
-
-    searchBtn = () => {
-        if (this.state.whichColumn === 'id') {
-            let newList = this.listSave.filter(content => {
-                return content[this.state.whichColumn] === parseInt(this.state.searchValue);
-        });
-        this.setState({ listData : newList });
-        } else {
-            let newList = this.listSave.filter(content => {
-                return content[this.state.whichColumn].toLowerCase().includes(this.state.searchValue.toLowerCase());
-            });
-            this.setState({ listData : newList });
-        }
-    }
-
-    handleClick = (nameColumn) => {
-        this.setState({ whichColumn: nameColumn });
-    }
-
     render() {
 
         const { listData, searchValue, whichColumn, nameRows } = this.state;
@@ -193,33 +254,14 @@ export default class BasicTable extends React.Component {
                 <button type="search" onClick={this.searchBtn} className="searchBtn">Search</button>
                 <p className="tableContentList">Tables <b>- Content List</b></p>
                 <p className="selectedColumn">Column <b className="nameColumn">{ nameRows[whichColumn] }</b> selected</p>
-                <TableContainer component={Paper} className="TableCustomize">
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                        <TableHead>
-                            <TableRow className="rowNames">
-                                {(whichColumn === 'id') ? <TableCell align="center" onClick={() => this.handleClick('id')} className="nameColumn">#</TableCell> : <TableCell align="center" onClick={() => this.handleClick('id')}>#</TableCell>}
-                                {(whichColumn === 'company') ? <TableCell align="center" onClick={() => this.handleClick('company')} className="nameColumn">Company Name</TableCell> : <TableCell align="center" onClick={() => this.handleClick('company')}>Company Name</TableCell>}
-                                {(whichColumn === 'division') ? <TableCell align="center" onClick={() => this.handleClick('division')} className="nameColumn">Divisio</TableCell> : <TableCell align="center" onClick={() => this.handleClick('division')}>Divisio</TableCell>}
-                                {(whichColumn === 'title') ? <TableCell align="center" onClick={() => this.handleClick('title')} className="nameColumn">Title</TableCell> : <TableCell align="center" onClick={() => this.handleClick('title')}>Title</TableCell>}
-                                {(whichColumn === 'createdDate') ? <TableCell align="center" onClick={() => this.handleClick('createdDate')} className="nameColumn">Created Date</TableCell> : <TableCell align="center" onClick={() => this.handleClick('createdDate')}>Created Date</TableCell>}
-                                {(whichColumn === 'updatedDate') ? <TableCell align="center" onClick={() => this.handleClick('updatedDate')} className="nameColumn">Updated Date</TableCell> : <TableCell align="center" onClick={() => this.handleClick('updatedDate')}>Updated Date</TableCell>}
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {listData.map((row) => (
-                                <ContentList
-                                    key={row.id}
-                                    id={row.id}
-                                    company={row.company}
-                                    division={row.division}
-                                    title={row.title}
-                                    createdDate={row.createdDate}
-                                    updatedDate={row.updatedDate}
-                                />
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+                <Paper style={{ height: 400, width: '100%' }}>
+                    <TableVirtuoso
+                        data={listData}
+                        components={VirtuosoTableComponents}
+                        fixedHeaderContent={fixedHeaderContent}
+                        itemContent={rowContent}
+                    />
+                </Paper>
             </div>
           );
     }
