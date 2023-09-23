@@ -483,7 +483,6 @@ export default class ReactVirtualizedTable extends React.Component {
             <body className="bodyContentbetPage">
                 <div>
                     <p className='hierarchy'>App {'>'} Content {'>'} ContentList</p>
-                    <br/>
                     <input
                         onChange={this.handleChange}
                         value={searchValue}
@@ -503,7 +502,7 @@ export default class ReactVirtualizedTable extends React.Component {
                         </select>
                     </div>
                     <p className="selectedColumn">Column <b className="nameColumn">{ nameRows[whichColumn] }</b> selected</p>
-                    <Paper style={{ height: 630, width: '100%' }}>
+                    <Paper style={{ height: 600, width: '100%' }}>
                         <TableVirtuoso
                             data={listData}
                             components={VirtuosoTableComponents}
