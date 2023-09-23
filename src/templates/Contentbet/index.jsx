@@ -495,7 +495,7 @@ export default class ReactVirtualizedTable extends React.Component {
                     <p className="tableContentList">Tables <b>- Content List</b></p>
                     <div>
                         <span className="chooseColumn">Select a Column</span>
-                        <select name="Select a Column" onChange={this.handleClick}>
+                        <select className="selectionColumn" onChange={this.handleClick}>
                             {listNameColumn.map((columnName) => (
                                <option key={columnName.label} value={columnName.label}>{columnName.value}</option> 
                             ))}
