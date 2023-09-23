@@ -82,11 +82,11 @@ The Task will be as the follows:
 
 1.Create a react project using create-react-app. - Ok!
 
-2.Make the UI as it looks in the image data.
+2.Make the UI as it looks in the image data. Ok!
 
-3.It does not have to look exactly the same, but the components should be there.
+3.It does not have to look exactly the same, but the components should be there. Ok!
 
-4.The data can be parsed from a pre-populated json object in the application itself. The list will be rendered from the json object. The input field and the search button need to be functional, searching by any one selected column is enough.
+4.The data can be parsed from a pre-populated json object in the application itself. The list will be rendered from the json object. The input field and the search button need to be functional, searching by any one selected column is enough. - Ok!
 
 5.Please use git to manage the project. - Ok!
 
