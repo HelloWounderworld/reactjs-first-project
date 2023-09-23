@@ -179,48 +179,50 @@ export default class BasicTable extends React.Component {
         const { listData, searchValue, whichColumn, nameRows } = this.state;
 
         return (
-            <div>
-                <p className='hierarchy'>App {'>'} Content {'>'} ContentList</p>
-                <br/>
-                <input
-                    onChange={this.handleChange}
-                    value={searchValue}
-                    className="searchBar"
-                />
-                <br/>
-                <br/>
-                <button onClick={this.clearBtn} className="clearBtn">Clear</button>
-                <button type="search" onClick={this.searchBtn} className="searchBtn">Search</button>
-                <p className="tableContentList">Tables <b>- Content List</b></p>
-                <p className="selectedColumn">Column <b className="nameColumn">{ nameRows[whichColumn] }</b> selected</p>
-                <TableContainer component={Paper} className="TableCustomize">
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                        <TableHead>
-                            <TableRow className="rowNames">
-                                {(whichColumn === 'id') ? <TableCell align="center" onClick={() => this.handleClick('id')} className="nameColumn">#</TableCell> : <TableCell align="center" onClick={() => this.handleClick('id')}>#</TableCell>}
-                                {(whichColumn === 'company') ? <TableCell align="center" onClick={() => this.handleClick('company')} className="nameColumn">Company Name</TableCell> : <TableCell align="center" onClick={() => this.handleClick('company')}>Company Name</TableCell>}
-                                {(whichColumn === 'division') ? <TableCell align="center" onClick={() => this.handleClick('division')} className="nameColumn">Divisio</TableCell> : <TableCell align="center" onClick={() => this.handleClick('division')}>Divisio</TableCell>}
-                                {(whichColumn === 'title') ? <TableCell align="center" onClick={() => this.handleClick('title')} className="nameColumn">Title</TableCell> : <TableCell align="center" onClick={() => this.handleClick('title')}>Title</TableCell>}
-                                {(whichColumn === 'createdDate') ? <TableCell align="center" onClick={() => this.handleClick('createdDate')} className="nameColumn">Created Date</TableCell> : <TableCell align="center" onClick={() => this.handleClick('createdDate')}>Created Date</TableCell>}
-                                {(whichColumn === 'updatedDate') ? <TableCell align="center" onClick={() => this.handleClick('updatedDate')} className="nameColumn">Updated Date</TableCell> : <TableCell align="center" onClick={() => this.handleClick('updatedDate')}>Updated Date</TableCell>}
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {listData.map((row) => (
-                                <ContentList
-                                    key={row.id}
-                                    id={row.id}
-                                    company={row.company}
-                                    division={row.division}
-                                    title={row.title}
-                                    createdDate={row.createdDate}
-                                    updatedDate={row.updatedDate}
-                                />
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-            </div>
+            <body className='bodyContentPage'>
+                <div>
+                    <p className='hierarchy'>App {'>'} Content {'>'} ContentList</p>
+                    <br/>
+                    <input
+                        onChange={this.handleChange}
+                        value={searchValue}
+                        className="searchBar"
+                    />
+                    <br/>
+                    <br/>
+                    <button onClick={this.clearBtn} className="clearBtn">Clear</button>
+                    <button type="search" onClick={this.searchBtn} className="searchBtn">Search</button>
+                    <p className="tableContentList">Tables <b>- Content List</b></p>
+                    <p className="selectedColumn">Column <b className="nameColumn">{ nameRows[whichColumn] }</b> selected</p>
+                    <TableContainer component={Paper} className="TableCustomize">
+                        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                            <TableHead>
+                                <TableRow className="rowNames">
+                                    {(whichColumn === 'id') ? <TableCell align="center" onClick={() => this.handleClick('id')} className="nameColumn">#</TableCell> : <TableCell align="center" onClick={() => this.handleClick('id')}>#</TableCell>}
+                                    {(whichColumn === 'company') ? <TableCell align="center" onClick={() => this.handleClick('company')} className="nameColumn">Company Name</TableCell> : <TableCell align="center" onClick={() => this.handleClick('company')}>Company Name</TableCell>}
+                                    {(whichColumn === 'division') ? <TableCell align="center" onClick={() => this.handleClick('division')} className="nameColumn">Divisio</TableCell> : <TableCell align="center" onClick={() => this.handleClick('division')}>Divisio</TableCell>}
+                                    {(whichColumn === 'title') ? <TableCell align="center" onClick={() => this.handleClick('title')} className="nameColumn">Title</TableCell> : <TableCell align="center" onClick={() => this.handleClick('title')}>Title</TableCell>}
+                                    {(whichColumn === 'createdDate') ? <TableCell align="center" onClick={() => this.handleClick('createdDate')} className="nameColumn">Created Date</TableCell> : <TableCell align="center" onClick={() => this.handleClick('createdDate')}>Created Date</TableCell>}
+                                    {(whichColumn === 'updatedDate') ? <TableCell align="center" onClick={() => this.handleClick('updatedDate')} className="nameColumn">Updated Date</TableCell> : <TableCell align="center" onClick={() => this.handleClick('updatedDate')}>Updated Date</TableCell>}
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {listData.map((row) => (
+                                    <ContentList
+                                        key={row.id}
+                                        id={row.id}
+                                        company={row.company}
+                                        division={row.division}
+                                        title={row.title}
+                                        createdDate={row.createdDate}
+                                        updatedDate={row.updatedDate}
+                                    />
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </div>
+            </body>
           );
     }
 }

@@ -472,29 +472,31 @@ export default class ReactVirtualizedTable extends React.Component {
         const { listData, searchValue, whichColumn, nameRows } = this.state;
 
         return (
-            <div>
-                <p className='hierarchy'>App {'>'} Content {'>'} ContentList</p>
-                <br/>
-                <input
-                    onChange={this.handleChange}
-                    value={searchValue}
-                    className="searchBar"
-                />
-                <br/>
-                <br/>
-                <button onClick={this.clearBtn} className="clearBtn">Clear</button>
-                <button type="search" onClick={this.searchBtn} className="searchBtn">Search</button>
-                <p className="tableContentList">Tables <b>- Content List</b></p>
-                <p className="selectedColumn">Column <b className="nameColumn">{ nameRows[whichColumn] }</b> selected</p>
-                <Paper style={{ height: 630, width: '100%' }}>
-                    <TableVirtuoso
-                        data={listData}
-                        components={VirtuosoTableComponents}
-                        fixedHeaderContent={this.fixedHeaderContent}
-                        itemContent={this.rowContent}
+            <body className="bodyContentbetPage">
+                <div>
+                    <p className='hierarchy'>App {'>'} Content {'>'} ContentList</p>
+                    <br/>
+                    <input
+                        onChange={this.handleChange}
+                        value={searchValue}
+                        className="searchBar"
                     />
-                </Paper>
-            </div>
+                    <br/>
+                    <br/>
+                    <button onClick={this.clearBtn} className="clearBtn">Clear</button>
+                    <button type="search" onClick={this.searchBtn} className="searchBtn">Search</button>
+                    <p className="tableContentList">Tables <b>- Content List</b></p>
+                    <p className="selectedColumn">Column <b className="nameColumn">{ nameRows[whichColumn] }</b> selected</p>
+                    <Paper style={{ height: 630, width: '100%' }}>
+                        <TableVirtuoso
+                            data={listData}
+                            components={VirtuosoTableComponents}
+                            fixedHeaderContent={this.fixedHeaderContent}
+                            itemContent={this.rowContent}
+                        />
+                    </Paper>
+                </div>
+            </body>
           );
     }
 }
