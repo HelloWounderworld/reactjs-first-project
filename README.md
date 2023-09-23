@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+## `npm i`
+
+Don't Forget to put at the terminal the command "npm i" before to put "npm run start".
+
 ### `npm start`
 
 Runs the app in the development mode.\
