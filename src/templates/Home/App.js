@@ -12,7 +12,7 @@ export default class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            Please. Click the button below!
+            Please, choose one of the two buttons below!
           </p>
           <Menu />
         </header>

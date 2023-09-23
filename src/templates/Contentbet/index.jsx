@@ -6,8 +6,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { ContentListbet } from '../../components/ContentListbet';
 import { TableVirtuoso } from 'react-virtuoso';
+import '../../styles/contentbet.css';
 
 const columns = [
   {
@@ -58,44 +58,6 @@ const VirtuosoTableComponents = {
   TableRow: ({ item: _item, ...props }) => <TableRow {...props} />,
   TableBody: React.forwardRef((props, ref) => <TableBody {...props} ref={ref} />),
 };
-
-function fixedHeaderContent() {
-  return (
-    <TableRow>
-      {columns.map((column) => (
-        <TableCell
-          key={column.dataKey}
-          variant="head"
-        //   align={column.numeric || false ? 'right' : 'left'}
-          align={'center'}
-          style={{ width: column.width }}
-          sx={{
-            backgroundColor: 'background.paper',
-          }}
-        >
-          {column.label}
-        </TableCell>
-      ))}
-    </TableRow>
-  );
-}
-
-function rowContent(_index, row) {
-  return (
-    <React.Fragment>
-      {columns.map((column) => (
-        <TableCell
-            key={column.dataKey}
-        //   align={column.numeric || false ? 'right' : 'left'}
-            align={'center'}
-        >
-          {row[column.dataKey]}
-        </TableCell>
-      ))}
-      {/* <ContentListbet /> */}
-    </React.Fragment>
-  );
-}
 
 export default class ReactVirtualizedTable extends React.Component {
     state = {
@@ -219,7 +181,207 @@ export default class ReactVirtualizedTable extends React.Component {
                 title: 'Entertainment',
                 createdDate: '11-09-2023 7:08',
                 updatedDate: '11-09-2023 7:08' 
-            },    
+            },
+            {
+                id: 16,
+                company: 'McKisey',
+                division: 'Consultant',
+                title: 'Solve problem',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 17,
+                company: 'Softbank',
+                division: 'Software Engineer',
+                title: 'Software',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 18,
+                company: 'Space X',
+                division: 'Rocket',
+                title: 'Horiemon',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 19,
+                company: 'Clear',
+                division: 'Broker',
+                title: 'Investiment',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 20,
+                company: 'Banco do Brasil',
+                division: 'Bank',
+                title: 'Keep Money',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 21,
+                company: 'Avenue',
+                division: 'Broker',
+                title: 'Investment',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 22,
+                company: 'NuInvest',
+                division: 'Broker',
+                title: 'Investment',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 23,
+                company: 'Konami',
+                division: 'Game',
+                title: 'Card Game',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 24,
+                company: 'AmericanTrade',
+                division: 'Broker',
+                title: 'Investiment',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 25,
+                company: 'Oxford',
+                division: 'College',
+                title: 'Class',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 26,
+                company: 'Cambridge',
+                division: 'College',
+                title: 'Class',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 27,
+                company: 'X Japan',
+                division: 'Music',
+                title: 'Yoshiki Hayashi',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 28,
+                company: 'Gackt',
+                division: 'Music',
+                title: 'Gackt Kamui',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 29,
+                company: 'Gorillaz',
+                division: 'Music',
+                title: 'Band Rock',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 30,
+                company: 'Tohei',
+                division: 'Animation',
+                title: 'Anime',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 31,
+                company: 'TOHO',
+                division: 'Animation',
+                title: 'Anime',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 32,
+                company: 'BitCoin',
+                division: 'Broker',
+                title: 'Investiment',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 33,
+                company: 'Tech Camp',
+                division: 'Course',
+                title: 'Mako Yukinari',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 34,
+                company: 'Udemy',
+                division: 'Course',
+                title: 'International Platform',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 35,
+                company: 'Alura',
+                division: 'Course',
+                title: 'Internacional Platform',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },     
+            {
+                id: 36,
+                company: 'Khan Academy',
+                division: 'Math',
+                title: 'Internacional Platform',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 37,
+                company: 'Stack Overflow',
+                division: 'Open Problem',
+                title: 'Platform',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 38,
+                company: '4ch',
+                division: 'Platform',
+                title: 'Yukihiro',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 39,
+                company: 'Twitter',
+                division: 'Social Network',
+                title: 'Entertainment',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            },
+            {
+                id: 40,
+                company: 'Instagram',
+                division: 'Social Network',
+                title: 'Entertainment',
+                createdDate: '11-09-2023 7:08',
+                updatedDate: '11-09-2023 7:08' 
+            }
         ],
         nameRows: {
             id: '#',
@@ -234,6 +396,76 @@ export default class ReactVirtualizedTable extends React.Component {
     };
 
     listSave = this.state.listData;
+
+    handleChange = (e) => {
+        this.setState({ searchValue : e.target.value})
+    }
+
+    clearBtn = () => {
+        this.setState({ searchValue: '', listData: this.listSave});
+    }
+
+    searchBtn = () => {
+        if (this.state.whichColumn === 'id') {
+            let newList = this.listSave.filter(content => {
+                return content[this.state.whichColumn] === parseInt(this.state.searchValue);
+        });
+        this.setState({ listData : newList });
+        } else {
+            let newList = this.listSave.filter(content => {
+                return content[this.state.whichColumn].toLowerCase().includes(this.state.searchValue.toLowerCase());
+            });
+            this.setState({ listData : newList });
+        }
+    }
+
+    handleClick = (nameColumn) => {
+        this.setState({ whichColumn: nameColumn });
+    }
+
+    fixedHeaderContent = () => {
+        return (
+          <TableRow>
+            {columns.map((column) => (
+              <TableCell
+                onClick={() => this.handleClick(column.dataKey)}
+                key={column.dataKey}
+                variant="head"
+                align={'center'}
+                style={{ width: column.width }}
+                sx={{
+                  backgroundColor: 'background.paper',
+                }}
+              >
+                {column.label}
+              </TableCell>
+            ))}
+          </TableRow>
+        );
+      }
+      rowContent = (_index, row) => {
+        return (
+          <React.Fragment>
+            {columns.map((column) => (
+                (row.id%2 === 1) ?
+                <TableCell
+                    key={column.dataKey}
+                    align={'center'}
+                    className="css-34nofg-MuiTableRow-root-Pair"
+                >
+                    {row[column.dataKey]}
+                </TableCell>
+                :
+                <TableCell
+                    key={column.dataKey}
+                    align={'center'}
+                >
+                    {row[column.dataKey]}
+                </TableCell>
+            ))}
+          </React.Fragment>
+        );
+      }
 
     render() {
 
@@ -254,12 +486,12 @@ export default class ReactVirtualizedTable extends React.Component {
                 <button type="search" onClick={this.searchBtn} className="searchBtn">Search</button>
                 <p className="tableContentList">Tables <b>- Content List</b></p>
                 <p className="selectedColumn">Column <b className="nameColumn">{ nameRows[whichColumn] }</b> selected</p>
-                <Paper style={{ height: 400, width: '100%' }}>
+                <Paper style={{ height: 630, width: '100%' }}>
                     <TableVirtuoso
                         data={listData}
                         components={VirtuosoTableComponents}
-                        fixedHeaderContent={fixedHeaderContent}
-                        itemContent={rowContent}
+                        fixedHeaderContent={this.fixedHeaderContent}
+                        itemContent={this.rowContent}
                     />
                 </Paper>
             </div>

@@ -18,7 +18,7 @@ code {
   font-size: 25px;
 }
 
-.css-1ndpvdd-MuiTableCell-root {
+/* .css-1ndpvdd-MuiTableCell-root {
   font-family: "Roboto","Helvetica","Arial",sans-serif;
   font-weight: 500;
   font-size: 0.875rem;
@@ -30,7 +30,7 @@ code {
   text-align: center;
   padding: 16px;
   color: rgb(255 255 255)!important;
-}
+} */
 
 .css-1yhpg23-MuiTableCell-root {
   font-family: "Roboto","Helvetica","Arial",sans-serif;
@@ -93,6 +93,7 @@ code {
 
 .nameColumn {
   color: rgb(255, 25, 4)!important;
+  font-size: 20px;
 }
 
 .disableSelection {
@@ -109,4 +110,9 @@ code {
 .hierarchy{
   color: rgb(255 255 255);
   font-size: 15px;
+}
+
+.css-34nofg-MuiTableRow-root-Pair {
+    color: rgb(255 255 255)!important;
+    background-color: #131b1b;
 }
