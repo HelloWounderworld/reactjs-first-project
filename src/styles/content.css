@@ -65,6 +65,7 @@ code {
   color: rgb(255 255 255);
   font-size: 20px;
   border: none;
+  padding: 5px 15px;
 }
 
 .clearBtn{
@@ -83,7 +84,6 @@ code {
   height: 50px;
   border-radius: 10px;
   border: none;
-  text-align: center !important;
 }
 
 .selectedColumn {
@@ -92,7 +92,7 @@ code {
 }
 
 .nameColumn {
-  color: rgb(255, 25, 4);
+  color: rgb(255, 25, 4)!important;
   font-size: 20px;
 }
 

@@ -38,16 +38,16 @@ export default class BasicTable extends React.Component {
                 updatedDate: '11-09-2023 7:08' 
                 }
         ],
-        rowNames: {
+        nameRows: {
             id: '#',
             company: 'Company Name',
             division: 'Division',
             title: 'Title',
             createdDate: 'Created Date',
-            updatedDate: 'Updated Date' 
+            updatedDate: 'Updated Date'
         },
         searchValue: '',
-        whichColumn: ''
+        whichColumn: 'company'
     };
 
     listSave = this.state.listData;
@@ -61,30 +61,26 @@ export default class BasicTable extends React.Component {
     }
 
     searchBtn = () => {
-        console.log(this.state.searchValue);
-
-        let newList = this.listSave.filter(content => {
-            if (this.state.whichColumn !== '') {
-                return content[this.state.whichColumn].toLowerCase().includes(this.state.searchValue.toLowerCase());
-            } else {
-                return content.company.toLowerCase().includes(this.state.searchValue.toLowerCase());
-            }
+        if (this.state.whichColumn === 'id') {
+            let newList = this.listSave.filter(content => {
+                return content[this.state.whichColumn] === parseInt(this.state.searchValue);
         });
         this.setState({ listData : newList });
+        } else {
+            let newList = this.listSave.filter(content => {
+                return content[this.state.whichColumn].toLowerCase().includes(this.state.searchValue.toLowerCase());
+            });
+            this.setState({ listData : newList });
+        }
     }
 
     handleClick = (nameColumn) => {
         this.setState({ whichColumn: nameColumn });
     }
 
-    disableSelectionColumn = () => {
-        console.log('Entrei')
-        this.setState({ whichColumn: '' });
-    }
-
     render() {
 
-        const { listData, searchValue, whichColumn, rowNames } = this.state;
+        const { listData, searchValue, whichColumn, nameRows } = this.state;
 
         return (
             <div>
@@ -100,22 +96,17 @@ export default class BasicTable extends React.Component {
                 <button onClick={this.clearBtn} className="clearBtn">Clear</button>
                 <button type="search" onClick={this.searchBtn} className="searchBtn">Search</button>
                 <p className="tableContentList">Tables <b>- Content List</b></p>
-                {whichColumn !== '' && (
-                    <div>
-                        <p className="selectedColumn">Column <b className="nameColumn">{rowNames[whichColumn]}</b> Selected</p>
-                        <button onClick={this.disableSelectionColumn} className="disableSelection">Disable Selection</button>
-                    </div>
-                )}
+                <p className="selectedColumn">Column <b className="nameColumn">{ nameRows[whichColumn] }</b> selected</p>
                 <TableContainer component={Paper} className="TableCustomize">
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
                             <TableRow className="rowNames">
-                                <TableCell align="center" onClick={() => this.handleClick('id')}>#</TableCell>
-                                <TableCell align="center" onClick={() => this.handleClick('company')}>Company Name</TableCell>
-                                <TableCell align="center" onClick={() => this.handleClick('division')}>Divisio</TableCell>
-                                <TableCell align="center" onClick={() => this.handleClick('title')}>Title</TableCell>
-                                <TableCell align="center" onClick={() => this.handleClick('createdDate')}>Created Date</TableCell>
-                                <TableCell align="center" onClick={() => this.handleClick('updatedDate')}>Updated Date</TableCell>
+                                {(whichColumn === 'id') ? <TableCell align="center" onClick={() => this.handleClick('id')} className="nameColumn">#</TableCell> : <TableCell align="center" onClick={() => this.handleClick('id')}>#</TableCell>}
+                                {(whichColumn === 'company') ? <TableCell align="center" onClick={() => this.handleClick('company')} className="nameColumn">Company Name</TableCell> : <TableCell align="center" onClick={() => this.handleClick('company')}>Company Name</TableCell>}
+                                {(whichColumn === 'division') ? <TableCell align="center" onClick={() => this.handleClick('division')} className="nameColumn">Divisio</TableCell> : <TableCell align="center" onClick={() => this.handleClick('division')}>Divisio</TableCell>}
+                                {(whichColumn === 'title') ? <TableCell align="center" onClick={() => this.handleClick('title')} className="nameColumn">Title</TableCell> : <TableCell align="center" onClick={() => this.handleClick('title')}>Title</TableCell>}
+                                {(whichColumn === 'createdDate') ? <TableCell align="center" onClick={() => this.handleClick('createdDate')} className="nameColumn">Created Date</TableCell> : <TableCell align="center" onClick={() => this.handleClick('createdDate')}>Created Date</TableCell>}
+                                {(whichColumn === 'updatedDate') ? <TableCell align="center" onClick={() => this.handleClick('updatedDate')} className="nameColumn">Updated Date</TableCell> : <TableCell align="center" onClick={() => this.handleClick('updatedDate')}>Updated Date</TableCell>}
                             </TableRow>
                         </TableHead>
                         <TableBody>
