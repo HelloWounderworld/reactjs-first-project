@@ -391,8 +391,16 @@ export default class ReactVirtualizedTable extends React.Component {
             createdDate: 'Created Date',
             updatedDate: 'Updated Date'
         },
+        listNameColumn:[
+            {label: 'id', value: '#'},
+            {label: 'company', value: 'Company Name'},
+            {label: 'division', value: 'Division'},
+            {label: 'title', value: 'Title'},
+            {label: 'createdDate', value: 'Created Date'},
+            {label: 'updatedDate', value: 'Updated Date'}
+        ],
         searchValue: '',
-        whichColumn: 'company'
+        whichColumn: 'id'
     };
 
     listSave = this.state.listData;
@@ -420,7 +428,7 @@ export default class ReactVirtualizedTable extends React.Component {
     }
 
     handleClick = (nameColumn) => {
-        this.setState({ whichColumn: nameColumn });
+        this.setState({ whichColumn: nameColumn.target.value });
     }
 
     fixedHeaderContent = () => {
@@ -428,7 +436,6 @@ export default class ReactVirtualizedTable extends React.Component {
           <TableRow>
             {columns.map((column) => (
               <TableCell
-                onClick={() => this.handleClick(column.dataKey)}
                 key={column.dataKey}
                 variant="head"
                 align={'center'}
@@ -469,7 +476,7 @@ export default class ReactVirtualizedTable extends React.Component {
 
     render() {
 
-        const { listData, searchValue, whichColumn, nameRows } = this.state;
+        const { listData, searchValue, whichColumn, nameRows, listNameColumn } = this.state;
 
         return (
             <body className="bodyContentbetPage">
@@ -486,6 +493,14 @@ export default class ReactVirtualizedTable extends React.Component {
                     <button onClick={this.clearBtn} className="clearBtn">Clear</button>
                     <button type="search" onClick={this.searchBtn} className="searchBtn">Search</button>
                     <p className="tableContentList">Tables <b>- Content List</b></p>
+                    <div>
+                        <span className="chooseColumn">Select a Column</span>
+                        <select name="Select a Column" onChange={this.handleClick}>
+                            {listNameColumn.map((columnName) => (
+                               <option key={columnName.label} value={columnName.label}>{columnName.value}</option> 
+                            ))}
+                        </select>
+                    </div>
                     <p className="selectedColumn">Column <b className="nameColumn">{ nameRows[whichColumn] }</b> selected</p>
                     <Paper style={{ height: 630, width: '100%' }}>
                         <TableVirtuoso

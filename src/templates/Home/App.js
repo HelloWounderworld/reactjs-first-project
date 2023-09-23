@@ -1,4 +1,4 @@
-// import logo from '../../logo.svg';
+import logo from '../../logo.svg';
 import './App.css';
 import { Component } from 'react';
 import { Menu } from '../../components/Menu'
@@ -10,7 +10,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
+          <img src={logo} className="App-logo" alt="logo" />
           <p>
             Please, choose one of the two buttons below!
           </p>
