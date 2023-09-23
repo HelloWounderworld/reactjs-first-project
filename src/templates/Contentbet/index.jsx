@@ -436,6 +436,7 @@ export default class ReactVirtualizedTable extends React.Component {
           <TableRow>
             {columns.map((column) => (
               <TableCell
+                className="font-color-contentbet"
                 key={column.dataKey}
                 variant="head"
                 align={'center'}
