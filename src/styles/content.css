@@ -1,13 +1,108 @@
 body {
-    margin: 0;
+    margin: 30px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #2f3e47;
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
+}
+
+.tableContentList {
+  color: rgb(255 255 255);
+  font-size: 25px;
+}
+
+.css-1ndpvdd-MuiTableCell-root {
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.01071em;
+  display: table-cell;
+  vertical-align: inherit;
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
+  text-align: center;
+  padding: 16px;
+  color: rgb(255 255 255)!important;
+}
+
+.css-1yhpg23-MuiTableCell-root {
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.43;
+  letter-spacing: 0.01071em;
+  display: table-cell;
+  vertical-align: inherit;
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
+  text-align: center;
+  padding: 16px;
+  color: rgb(255 255 255)!important;
+}
+
+.css-11xur9t-MuiPaper-root-MuiTableContainer-root {
+  background-color: #2f3e47 !important;
+  color: rgb(255 255 255) !important;
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+  width: 100%;
+  overflow-x: auto;
+}
+
+.searchBar {
+  width: 500px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: rgba(20,25,29,255);
+  color: rgb(255 255 255);
+  font-size: 20px;
+  border: none;
+}
+
+.clearBtn{
+  background-color: #fefefe;
+  width: 80px;
+  height: 50px;
+  border-radius: 15px;
+  margin-right: 10px;
+  border: none;
+}
+
+.searchBtn {
+  background-color: #33bac5;
+  color:#fefefe;
+  width: 120px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  text-align: center !important;
+}
+
+.selectedColumn {
+  color: rgb(255 255 255);
+  font-size: 20px;
+}
+
+.nameColumn {
+  color: rgb(255, 25, 4);
+  font-size: 20px;
+}
+
+.disableSelection {
+  background-color: #65f456;
+  color:rgba(0,0,0);
+  font-weight: bold;
+  font-size: 15px;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
 }

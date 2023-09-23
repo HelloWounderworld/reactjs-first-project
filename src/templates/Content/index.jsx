@@ -6,7 +6,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-// import '../../content.css';
+import { ContentList } from '../../components/ContentList'
+import '../../styles/content.css';
 
 
 export default class BasicTable extends React.Component {
@@ -25,8 +26,8 @@ export default class BasicTable extends React.Component {
                 company: 'Buu Digital LTDA',
                 division: 'Programmer',
                 title: 'Toft Site',
-                createdDate: '11-09-2023 7:08',
-                updatedDate: '11-09-2023 7:08' 
+                createdDate: '11-09-2023 9:08',
+                updatedDate: '11-09-2023 9:08' 
                 },
                 {
                 id: 3,
@@ -60,7 +61,9 @@ export default class BasicTable extends React.Component {
     }
 
     searchBtn = () => {
-        let newList = this.state.listData.filter(content => {
+        console.log(this.state.searchValue);
+
+        let newList = this.listSave.filter(content => {
             if (this.state.whichColumn !== '') {
                 return content[this.state.whichColumn].toLowerCase().includes(this.state.searchValue.toLowerCase());
             } else {
@@ -90,22 +93,23 @@ export default class BasicTable extends React.Component {
                 <input
                     onChange={this.handleChange}
                     value={searchValue}
+                    className="searchBar"
                 />
                 <br/>
                 <br/>
-                <button onClick={this.clearBtn}>Clear</button>
-                <button type="search" onClick={this.searchBtn}>Search</button>
-                <p>Tables <b>- Content List</b></p>
+                <button onClick={this.clearBtn} className="clearBtn">Clear</button>
+                <button type="search" onClick={this.searchBtn} className="searchBtn">Search</button>
+                <p className="tableContentList">Tables <b>- Content List</b></p>
                 {whichColumn !== '' && (
                     <div>
-                        <p>Column {rowNames[whichColumn]} Selected</p>
-                        <button onClick={this.disableSelectionColumn}>Disable Selection Column</button>
+                        <p className="selectedColumn">Column <b className="nameColumn">{rowNames[whichColumn]}</b> Selected</p>
+                        <button onClick={this.disableSelectionColumn} className="disableSelection">Disable Selection</button>
                     </div>
                 )}
-                <TableContainer component={Paper}>
+                <TableContainer component={Paper} className="TableCustomize">
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
-                            <TableRow>
+                            <TableRow className="rowNames">
                                 <TableCell align="center" onClick={() => this.handleClick('id')}>#</TableCell>
                                 <TableCell align="center" onClick={() => this.handleClick('company')}>Company Name</TableCell>
                                 <TableCell align="center" onClick={() => this.handleClick('division')}>Divisio</TableCell>
@@ -116,19 +120,15 @@ export default class BasicTable extends React.Component {
                         </TableHead>
                         <TableBody>
                             {listData.map((row) => (
-                                <TableRow
-                                key={row.id}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                                >
-                                <TableCell component="th" scope="row" align="center">
-                                    {row.id}
-                                </TableCell>
-                                <TableCell align="center">{row.company}</TableCell>
-                                <TableCell align="center">{row.division}</TableCell>
-                                <TableCell align="center">{row.title}</TableCell>
-                                <TableCell align="center">{row.createdDate}</TableCell>
-                                <TableCell align="center">{row.updatedDate}</TableCell>
-                                </TableRow>
+                                <ContentList
+                                    key={row.id}
+                                    id={row.id}
+                                    company={row.company}
+                                    division={row.division}
+                                    title={row.title}
+                                    createdDate={row.createdDate}
+                                    updatedDate={row.updatedDate}
+                                />
                             ))}
                         </TableBody>
                     </Table>
