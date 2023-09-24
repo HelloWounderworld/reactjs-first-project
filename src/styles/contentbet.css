@@ -58,6 +58,35 @@ code {
   padding: 5px 15px;
 }
 
+.searchBarFirstNumber {
+  width: 60px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: rgba(20,25,29,255);
+  color: rgb(255 255 255);
+  font-size: 20px;
+  border: none;
+  padding: 5px 15px;
+}
+
+.searchBarSecondNumber {
+  width: 60px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: rgba(20,25,29,255);
+  color: rgb(255 255 255);
+  font-size: 20px;
+  border: none;
+  padding: 5px 15px;
+}
+
+.intervalNumber {
+  color: rgb(255 255 255);
+  font-size: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
 .clearBtn{
   background-color: #fefefe;
   width: 80px;

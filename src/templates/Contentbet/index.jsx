@@ -400,13 +400,38 @@ export default class ReactVirtualizedTable extends React.Component {
             {label: 'updatedDate', value: 'Updated Date'}
         ],
         searchValue: '',
-        whichColumn: 'id'
+        whichColumn: 'id',
+        firstNumber: '',
+        secondNumber: ''
     };
 
     listSave = this.state.listData;
 
+    handleChangeFisrtNumber = (e) => {
+        if (e.target.value <= 0) {
+            alert(`Put positive interger less than ${this.listSave.length}!`);
+            this.setState({ firstNumber : '' });
+        } else {
+            this.setState({ firstNumber : parseInt(e.target.value) });
+        }
+    }
+
+    handleChangeSecondNumber = (e) => {
+        if (this.state.firstNumber === '') {
+            alert('Put first number!');
+            this.setState({ secondNumber : ''});
+        } else {
+            if (this.state.firstNumber > e.target.value) {
+                alert('Put any number bigger than first number!')
+                this.setState({ secondNumber : ''});
+            } else {
+                this.setState({ secondNumber : e.target.value});
+            }
+        }
+    }
+
     handleChange = (e) => {
-        this.setState({ searchValue : e.target.value})
+        this.setState({ searchValue : e.target.value});
     }
 
     clearBtn = () => {
@@ -415,10 +440,22 @@ export default class ReactVirtualizedTable extends React.Component {
 
     searchBtn = () => {
         if (this.state.whichColumn === 'id') {
-            let newList = this.listSave.filter(content => {
-                return content[this.state.whichColumn] === parseInt(this.state.searchValue);
-        });
-        this.setState({ listData : newList });
+            if (this.state.firstNumber === '') {
+                alert('Please put a positive integer, at least, in first number!');
+                this.setState({ firstNumber: '' });
+                this.setState({ secondNumber: '' });
+            } else {
+                if ((this.state.firstNumber === this.state.secondNumber) || (this.state.firstNumber !== '' && this.state.secondNumber === '')) {
+                    this.setState({ secondNumber: this.state.firstNumber })
+                    let newList = this.listSave.filter(content => {
+                        return content[this.state.whichColumn] === parseInt(this.state.firstNumber);
+                    });
+                    this.setState({ listData : newList });
+                } else {
+                    let newList = this.listSave.slice(this.state.firstNumber - 1, this.state.secondNumber);
+                    this.setState({ listData : newList });
+                }
+            }
         } else {
             let newList = this.listSave.filter(content => {
                 return content[this.state.whichColumn].toLowerCase().includes(this.state.searchValue.toLowerCase());
@@ -477,17 +514,36 @@ export default class ReactVirtualizedTable extends React.Component {
 
     render() {
 
-        const { listData, searchValue, whichColumn, nameRows, listNameColumn } = this.state;
+        const { listData, searchValue, whichColumn, nameRows, listNameColumn, firstNumber, secondNumber } = this.state;
 
         return (
             <body className="bodyContentbetPage">
                 <div>
                     <p className='hierarchy'>App {'>'} Content {'>'} ContentList</p>
+                    {(whichColumn === 'id') ?
+                    <div>
+                        <span className="intervalNumber">Interval</span>
+                        <input
+                            onChange={this.handleChangeFisrtNumber} 
+                            value={firstNumber}
+                            className="searchBarFirstNumber"
+                            type="number"
+                        />
+                        <span className="intervalNumber">until</span>
+                        <input
+                            onChange={this.handleChangeSecondNumber}
+                            value={secondNumber}  
+                            className="searchBarSecondNumber"  
+                            type="number"
+                        />
+                    </div>
+                    :
                     <input
                         onChange={this.handleChange}
                         value={searchValue}
                         className="searchBar"
                     />
+                    }
                     <br/>
                     <br/>
                     <button onClick={this.clearBtn} className="clearBtn">Clear</button>
