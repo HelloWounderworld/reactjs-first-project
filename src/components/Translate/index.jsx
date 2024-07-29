@@ -10,13 +10,13 @@ i18n
           welcome: "Welcome to our application!",
         },
       },
-      pt: {
+      jp: {
         translation: {
-          welcome: "Bem-vindo à nossa aplicação!",
+          welcome: "私たちのアプリケーションへようこそ！",
         },
       },
     },
-    lng: "pt", // Define o idioma padrão
+    lng: "jp", // Define o idioma padrão
     fallbackLng: "en", // Idioma de fallback
     interpolation: {
       escapeValue: false, // React já escapa por padrão

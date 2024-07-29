@@ -13,7 +13,7 @@ function App() {
     <div>
       <h1>{t('welcome')}</h1>
       <button onClick={() => changeLanguage('en')}>English</button>
-      <button onClick={() => changeLanguage('pt')}>Português</button>
+      <button onClick={() => changeLanguage('jp')}>Japanese</button>
     </div>
   );
 }
