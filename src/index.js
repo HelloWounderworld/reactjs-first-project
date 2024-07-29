@@ -5,6 +5,7 @@ import './styles/index.css';
 import App from './templates/Home/App';
 import Content from './templates/Content';
 import Contentbet from './templates/Contentbet';
+import Translator from './templates/Translator';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,6 +16,7 @@ root.render(
         <Route path="/" element = {<App />}  exact/>
         <Route path="/content" element = {<Content />}  exact/>
         <Route path="/contentbet" element = {<Contentbet />}  exact/>
+        <Route path="/translator" element = {<Translator />}  exact/>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

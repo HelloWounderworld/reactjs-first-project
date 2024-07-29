@@ -21,3 +21,15 @@
     border: none;
     margin-right: 30px;
 }
+
+.buttonbuttonContentThird {
+    background-color: #65f456;
+    color:rgba(0,0,0);
+    font-weight: bold;
+    font-size: 15px;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    margin-right: 30px;
+}
